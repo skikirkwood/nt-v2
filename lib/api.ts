@@ -74,7 +74,8 @@ const getArticleQuery = (pageParams: IPagelikeQueryParams) => {
 export async function getPage(pageParams: IPagelikeQueryParams) {
   const query = getPageQuery(pageParams);
   const client = getClient(pageParams.preview as boolean);
-  const entries = await client.getEntries<TypePageSkeleton>(query);
+  const entries =
+    await client.withoutUnresolvableLinks.getEntries<TypePageSkeleton>(query);
   const [page] = entries.items;
   return page;
 }
