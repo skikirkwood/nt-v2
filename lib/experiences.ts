@@ -14,7 +14,7 @@ export const hasExperiences = (
   entry: unknown
 ): entry is BaselineWithExperiencesEntry => {
   return (
-    (entry as BaselineWithExperiencesEntry).fields.nt_experiences !== undefined
+    (entry as BaselineWithExperiencesEntry)?.fields?.nt_experiences !== undefined
   );
 };
 
