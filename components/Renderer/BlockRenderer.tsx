@@ -62,7 +62,12 @@ type Component =
   | TypeSectionsGroupWithoutUnresolvableLinksResponse;
 
 const ComponentRenderer = (props: Component) => {
-  const contentTypeId = props.sys.contentType.sys.id;
+  const contentTypeId = props?.sys?.contentType?.sys?.id;
+
+  if (!contentTypeId) {
+    return null;
+  }
+
   const Component = ContentTypeMap[contentTypeId];
 
   if (!Component) {
